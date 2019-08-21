@@ -12,7 +12,7 @@ export interface NotificationData {
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationServiceService {
+export class NotificationService {
   private config: MatDialogConfig = {
     width: '400px',
     hasBackdrop: false,
