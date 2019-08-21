@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { NotificationComponent } from '../notification/notification.component';
+import { NotificationService, NotificationData } from '../notification/notification.service';
 
 @Component({
   selector: 'app-container',
@@ -9,40 +8,25 @@ import { NotificationComponent } from '../notification/notification.component';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
-  private config: MatDialogConfig = {
-    width: '400px',
-    hasBackdrop: false,
-    position: {
-      bottom: '20px',
-      left: '20px'
-    }
-  };
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public service: NotificationService) { }
 
   ngOnInit() {
   }
 
   showSuccess() {
-    this.config.panelClass = 'notification-success';
-    this.showNotification();
+    const data: NotificationData = {
+      title: 'Notificação de sucesso',
+      description: 'Deu tudo certo!!!'
+    };
+    this.service.showSuccess(data);
   }
 
   showError() {
-    this.config.panelClass = 'notification-error';
-    this.showNotification();
-  }
-
-  showNotification() {
-    const notification = this.dialog.open(NotificationComponent, this.config);
-    const contador = setTimeout(() => {
-      console.log('TIMEOUT');
-      notification.close();
-    }, 3000);
-
-    notification.afterClosed().subscribe(() => {
-      clearTimeout(contador);
-      console.log('Fechado');
-    });
+    const data: NotificationData = {
+      title: 'Notificação de erro',
+      description: 'Deu alguma bosta'
+    };
+    this.service.showError(data);
   }
 }
