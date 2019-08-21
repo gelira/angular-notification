@@ -30,12 +30,12 @@ export class NotificationService {
   }
 
   showError(data: NotificationData) {
-    this.config.panelClass = 'notification-success';
+    this.config.panelClass = 'notification-error';
     this.showNotification(data);
   }
 
   showSuccess(data: NotificationData) {
-    this.config.panelClass = 'notification-error';
+    this.config.panelClass = 'notification-success';
     this.showNotification(data);
   }
 
