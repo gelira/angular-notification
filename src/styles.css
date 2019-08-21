@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.notification-success .mat-dialog-container {
+  border: 1px solid #338a3e;
+  color: #155724;
+  background-color: #98ee99;
+}
+
+.notification-error .mat-dialog-container {
+  border: 1px solid #e53935;
+  color: #ab000d;
+  background-color: #ff6f60;
+} 
